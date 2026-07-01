@@ -1,0 +1,36 @@
+{
+  "name": "speckit-codex-flow",
+  "version": "0.1.0",
+  "description": "Local Codex workflow guardrails and tools for GitHub Spec Kit.",
+  "author": {
+    "name": "Local developer"
+  },
+  "homepage": "https://github.com/HuYellow/speckit-codex-flow#readme",
+  "repository": "https://github.com/HuYellow/speckit-codex-flow",
+  "license": "MIT",
+  "keywords": [
+    "spec-kit",
+    "spec-driven-development",
+    "codex",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Spec Kit Codex Flow",
+    "shortDescription": "Guide Spec Kit projects through Codex.",
+    "longDescription": "Spec Kit Codex Flow adds local Codex skills and MCP tools that bootstrap GitHub Spec Kit, inspect project artifacts, and enforce spec-driven gates before implementation.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Start the Spec Kit workflow for this repo.",
+      "Check whether this feature can be implemented.",
+      "Bootstrap Spec Kit for Codex in this project."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

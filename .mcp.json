@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "speckit-codex-flow": {
+      "command": "node",
+      "args": [
+        "scripts/start-server.mjs"
+      ]
+    }
+  }
+}
