@@ -41,6 +41,7 @@ Codex chat
   |-- plugin skills
   |     |-- $speckit-flow
   |     |-- $speckit-bootstrap
+  |     |-- $speckit-specify
   |     |-- $speckit-status
   |     |-- $speckit-gate
   |     `-- $speckit-flow-implement
@@ -65,6 +66,7 @@ Target project
 | --- | --- |
 | `$speckit-flow` | Top-level workflow controller. It reads project state and recommends the next Spec Kit skill. |
 | `$speckit-bootstrap` | Checks the local environment, installs or guides installation of `specify`, and initializes a project with Codex skills mode. |
+| `$speckit-specify` | Plugin-level compatibility trigger for creating or updating a feature spec. It delegates to the project-local official `speckit-specify` instructions. |
 | `$speckit-status` | Read-only project status summary for `.specify`, official skills, and current feature artifacts. |
 | `$speckit-gate` | Read-only phase gate for `plan`, `tasks`, `implement`, and `converge`. |
 | `$speckit-flow-implement` | Strict implementation entrypoint. It only proceeds to official `$speckit-implement` after the implementation gate passes. |
@@ -177,7 +179,17 @@ $speckit-flow
 
 The plugin reads project state and recommends the next official Spec Kit skill, such as `$speckit-constitution`, `$speckit-specify`, `$speckit-plan`, or `$speckit-tasks`.
 
-### 4. Gate Implementation
+### 4. Create a Feature Spec Directly
+
+You can also call the specification phase directly:
+
+```text
+$speckit-specify Build a local dashboard for tracking project risks and mitigation owners.
+```
+
+This wrapper checks that the project has been bootstrapped, then reads and follows the official project-local `.agents/skills/speckit-specify/SKILL.md` instructions.
+
+### 5. Gate Implementation
 
 Before implementation:
 
@@ -187,7 +199,7 @@ $speckit-flow-implement
 
 If the gate passes, Codex can continue with official `$speckit-implement`. If it fails, the plugin reports concrete blockers and the next skill to run.
 
-### 5. Reconcile Drift
+### 6. Reconcile Drift
 
 After implementation, use:
 

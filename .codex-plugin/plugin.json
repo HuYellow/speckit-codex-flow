@@ -1,6 +1,6 @@
 {
   "name": "speckit-codex-flow",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260707091456",
   "description": "Local Codex workflow guardrails and tools for GitHub Spec Kit.",
   "author": {
     "name": "Local developer"
@@ -28,7 +28,7 @@
     ],
     "defaultPrompt": [
       "Start the Spec Kit workflow for this repo.",
-      "Check whether this feature can be implemented.",
+      "Create a Spec Kit feature spec from my request.",
       "Bootstrap Spec Kit for Codex in this project."
     ]
   },

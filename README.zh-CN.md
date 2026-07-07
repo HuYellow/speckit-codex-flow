@@ -41,6 +41,7 @@ Codex chat
   |-- plugin skills
   |     |-- $speckit-flow
   |     |-- $speckit-bootstrap
+  |     |-- $speckit-specify
   |     |-- $speckit-status
   |     |-- $speckit-gate
   |     `-- $speckit-flow-implement
@@ -65,6 +66,7 @@ Codex chat
 | --- | --- |
 | `$speckit-flow` | 顶层工作流控制器，读取项目状态并推荐下一步 Spec Kit skill。 |
 | `$speckit-bootstrap` | 检查本地环境，安装或引导安装 `specify`，并用 Codex skills 模式初始化项目。 |
+| `$speckit-specify` | 插件级兼容入口，用来创建或更新 feature spec；它会委托项目内官方 `speckit-specify` 指令执行。 |
 | `$speckit-status` | 只读状态汇总，展示 `.specify`、官方 skills 和当前 feature artifact。 |
 | `$speckit-gate` | 对 `plan`、`tasks`、`implement`、`converge` 做只读阶段门禁检查。 |
 | `$speckit-flow-implement` | 严格实现入口。只有实现门禁通过后，才继续进入官方 `$speckit-implement`。 |
@@ -177,7 +179,17 @@ $speckit-flow
 
 插件会读取项目状态，并推荐下一步官方 Spec Kit skill，例如 `$speckit-constitution`、`$speckit-specify`、`$speckit-plan` 或 `$speckit-tasks`。
 
-### 4. 实现前门禁
+### 4. 直接创建 Feature Spec
+
+你也可以直接调用规格阶段：
+
+```text
+$speckit-specify 做一个本地项目风险看板，可以记录风险、缓解措施和负责人。
+```
+
+这个包装入口会先确认项目已经 bootstrap，然后读取并执行项目内官方 `.agents/skills/speckit-specify/SKILL.md` 的指令。
+
+### 5. 实现前门禁
 
 实现前使用：
 
@@ -187,7 +199,7 @@ $speckit-flow-implement
 
 如果门禁通过，Codex 可以继续使用官方 `$speckit-implement`。如果失败，插件会列出具体 blocker 和下一步应该运行的 skill。
 
-### 5. 收敛代码与规格
+### 6. 收敛代码与规格
 
 实现后可以使用：
 
